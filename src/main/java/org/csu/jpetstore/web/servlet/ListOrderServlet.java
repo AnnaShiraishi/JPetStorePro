@@ -1,0 +1,34 @@
+package org.csu.jpetstore.web.servlet;
+
+import org.csu.jpetstore.domain.Account;
+import org.csu.jpetstore.domain.Order;
+import org.csu.jpetstore.service.OrderService;
+import org.csu.jpetstore.service.impl.OrderServiceImpl;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.List;
+
+public class ListOrderServlet extends HttpServlet {
+    private static final String LIST_ORDER = "/WEB-INF/order/ListOrders.jsp";
+    private OrderService orderService;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        orderService = new OrderServiceImpl();
+        HttpSession session = req.getSession();
+        Account account = (Account) session.getAttribute("account");
+        List<Order> orderList = orderService.getOrdersByUsername(account.getUsername());
+        session.setAttribute("orderList", orderList);
+        req.getRequestDispatcher(LIST_ORDER).forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+}
