@@ -33,7 +33,7 @@
           media="screen"/>
     <meta name="generator"
           content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
-    <title>JPetStore Demo</title>
+    <title>JPetStorePro</title>
     <meta content="text/html; charset=windows-1252"
           http-equiv="Content-Type"/>
     <meta charset="utf-8"/>
