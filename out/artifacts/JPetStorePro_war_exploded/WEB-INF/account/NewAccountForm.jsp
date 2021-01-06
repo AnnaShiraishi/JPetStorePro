@@ -20,7 +20,7 @@
 <div id="Catalog" class="container">
 	<form id="signup" action="${pageContext.request.contextPath}/signup" method="post">
 
-	<h3 class="infoTitle">User Information</h3>
+		<h3 class="infoTitle">User Information</h3>
 
 		<div class="form-group">
 			<label for="username">User Name</label>
@@ -103,14 +103,14 @@
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="languagePreference">Language Preference</label>
-				<select id="languagePreference" name="languagePreference" class="form-control">
+				<select id="languagePreference" name="languagePreference" class="form-control custom-select">
 					<option value="english"<c:if test="${account.languagePreference == 'english'}">selected="selected"</c:if>>English</option>
 					<option value="japanese"<c:if test="${account.languagePreference == 'japanese'}">selected="selected"</c:if>>Japanese</option>
 				</select>
 			</div>
 			<div class="form-group col-md-6">
 				<label for="favoriteCategory">Favourite Category</label>
-				<select id="favoriteCategory" name="favoriteCategory" class="form-control">
+				<select id="favoriteCategory" name="favoriteCategory" class="form-control custom-select">
 					<option value="FISH"<c:if test="${account.favouriteCategoryId == 'FISH'}">selected="selected"</c:if>>Fish</option>
 					<option value="DOGS"<c:if test="${account.favouriteCategoryId == 'DOGS'}">selected="selected"</c:if>>Dogs</option>
 					<option value="REPTILES"<c:if test="${account.favouriteCategoryId == 'REPTILES'}">selected="selected"</c:if>>Reptiles</option>
@@ -122,18 +122,24 @@
 
 		<div class="form-row">
 			<div class="form-group col-md-6">
-				<input name="listOpt" class="form-check-input" type="checkbox"<c:if test="${account.listOption}">checked</c:if>>
-				<label class="form-check-label" for="gridCheck">Enable MyList</label>
+				<div class="custom-control custom-switch">
+					<input <c:if test="${account.listOption}">checked</c:if> type="checkbox" class="custom-control-input" id="listOpt" name="listOpt"/>
+					<label class="custom-control-label" for="listOpt">Enable MyList</label>
+				</div>
 			</div>
 			<div class="form-group col-md-6">
-				<input name="bannerOpt" class="form-check-input" type="checkbox"<c:if test="${account.bannerOption}">checked</c:if>>
-				<label class="form-check-label" for="gridCheck">Enable MyBanner</label>
+				<div class="custom-control custom-switch">
+					<input <c:if test="${account.bannerOption}">checked</c:if> type="checkbox" class="custom-control-input" id="bannerOpt" name="bannerOpt"/>
+					<label class="custom-control-label" for="bannerOpt">Enable MyBanner</label>
+				</div>
 			</div>
 		</div>
 
+
+
 		<p style="color: red">${requestScope.message}</p>
 
-	<input name="editAccount" id="editAccount" value="Creat New Account" class="btn btn-primary my-1" type="button" /><br>
+		<input name="editAccount" id="editAccount" value="Creat New Account" class="btn btn-success my-1" type="button" /><br>
 
 	</form>
 </div>

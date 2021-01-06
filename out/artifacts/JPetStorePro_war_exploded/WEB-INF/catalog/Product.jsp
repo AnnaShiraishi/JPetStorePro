@@ -18,7 +18,7 @@
 <%@ include file="../common/IncludeTop.jsp"%>
 
 <div id="BackLink">
-	<a href="${pageContext.request.contextPath}/category?id=${product.categoryId}">Return to ${product.categoryId}</a>
+	<a class="card-link back-link" href="${pageContext.request.contextPath}/category?id=${product.categoryId}"> < ${product.categoryId}</a>
 </div>
 
 <div id="Catalog" class="container">

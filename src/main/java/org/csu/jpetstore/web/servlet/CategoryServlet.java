@@ -22,7 +22,13 @@ public class CategoryServlet extends HttpServlet {
         List<Product> productList;
         productList = catalogService.getProductListByCategory(id);
         req.setAttribute("productList", productList);
-        req.setAttribute("categoryId",id);
+        req.setAttribute("categoryId", id);
+        char[] ch = id.toCharArray();
+        if (ch[0] >= 'a' && ch[0] <= 'z') {
+            ch[0] = (char) (ch[0] - 32);
+        }
+        String categoryName = new String(ch);
+        req.setAttribute("categoryName", categoryName);
         req.getRequestDispatcher(CATEGORY).forward(req, resp);
     }
 

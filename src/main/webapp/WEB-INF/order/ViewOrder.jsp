@@ -17,8 +17,6 @@
 --%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
-<div id="BackLink"><a href="${pageContext.request.contextPath}/main">Return to Main Menu</a></div>
-
 <div id="Catalog" class="container">
 	<h3>You have creat a new order.</h3>
 	<table align="center" class="table table-hover">
@@ -162,6 +160,8 @@
 		</tr>
 
 	</table>
+
+	<a class="btn btn-success" href="${pageContext.request.contextPath}/main"> Return to Main Menu </a>
 
 </div>
 <%@ include file="../common/IncludeBottom.jsp"%>

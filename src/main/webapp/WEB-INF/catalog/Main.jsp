@@ -17,15 +17,15 @@
 --%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
-<div id="Welcome">
-	<div id="WelcomeContent">
-		<c:if test="${account != null }">
-			<c:if test="${authenticated}">
-				Welcome ${account.firstName}!
-			</c:if>
-		</c:if>
-	</div>
-</div>
+<%--<div id="Welcome">--%>
+<%--	<div id="WelcomeContent">--%>
+<%--		<c:if test="${account != null }">--%>
+<%--			<c:if test="${authenticated}">--%>
+<%--				Welcome ${account.firstName}!--%>
+<%--			</c:if>--%>
+<%--		</c:if>--%>
+<%--	</div>--%>
+<%--</div>--%>
 
 <div id="Main" class="container">
 	<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">

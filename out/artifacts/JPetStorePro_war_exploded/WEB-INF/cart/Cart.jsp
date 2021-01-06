@@ -17,7 +17,7 @@
 --%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
-<div id="BackLink"><a href="${pageContext.request.contextPath}/main">Return to Main Menu</a></div>
+<%--<div id="BackLink"><a href="${pageContext.request.contextPath}/main">Return to Main Menu</a></div>--%>
 
 <div id="Catalog">
 
@@ -36,7 +36,7 @@
 			<th><b>Remove</b></th>
 		</tr>
 
-		<c:if test="${cart.numberOfItems == 0}">
+		<c:if test="${cart.numberOfItems == 0 || cart == null}">
 			<tr>
 				<td colspan="8"><b>Your cart is empty.</b></td>
 			</tr>
@@ -59,13 +59,13 @@
 				</td>
 				<td><fmt:formatNumber value="${cartItem.item.listPrice}"
 									  pattern="$#,##0.00" /></td>
-				<td><fmt:formatNumber value="${cartItem.total}"
+				<td id="itemTotal" class="itemTotal" itemId="${cartItem.item.itemId}"><fmt:formatNumber value="${cartItem.total}"
 									  pattern="$#,##0.00" /></td>
 				<td><a href="${pageContext.request.contextPath}/removeitem?id=${cartItem.item.itemId}" class="btn btn-outline-success">Remove</a></td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="7">Sub Total: <fmt:formatNumber value="${cart.subTotal}" pattern="$#,##0.00" />
+			<td colspan="7">Sub Total: <span id="subTotal"><fmt:formatNumber value="${cart.subTotal}" pattern="$#,##0.00" /></span>
 			<a href="${pageContext.request.contextPath}/clearcart" class="btn btn-outline-success">Clear Cart</a>
 			</td>
 			<td>&nbsp;</td>

@@ -53,8 +53,24 @@ public class ViewOrderServlet extends HttpServlet {
         order.setBillCountry(billCountry);
         if (shippingAddressRequired != null) {
             order.setShippingAddressRequired(true);
+            String shipToFirstName = req.getParameter("shipToFirstName");
+            String shipToLastName = req.getParameter("shipToLastName");
+            String shipAddress1 = req.getParameter("shipAddress1");
+            String shipAddress2 = req.getParameter("shipAddress2");
+            String shipCity = req.getParameter("shipCity");
+            String shipState = req.getParameter("shipState");
+            String shipZip = req.getParameter("shipZip");
+            String shipCountry = req.getParameter("shipCountry");
+            order.setShipToFirstName(shipToFirstName);
+            order.setShipToLastName(shipToLastName);
+            order.setShipAddress1(shipAddress1);
+            order.setShipAddress2(shipAddress2);
+            order.setShipCity(shipCity);
+            order.setShipState(shipState);
+            order.setShipZip(shipZip);
+            order.setShipCountry(shipCountry);
             req.setAttribute("order", order);
-            req.getRequestDispatcher(SHIPPING_FORM).forward(req, resp);
+            req.getRequestDispatcher(CONFIRM_ORDER).forward(req, resp);
         } else {
             order.setShippingAddressRequired(false);
             req.setAttribute("order", order);

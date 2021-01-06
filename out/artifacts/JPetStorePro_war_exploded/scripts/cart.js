@@ -5,8 +5,9 @@ $(function () {
     // <button class="btn decrementItemBtn" itemId="${cartItem.item.itemId}">-</button>
 
     $('.decrementItemBtn').on('click', function (e) {
-        var data = 'id=' + this.getAttribute('itemId');
-        var textId = '#item-' + this.getAttribute('itemId');
+        var itemId = this.getAttribute('itemId')
+        var data = 'id=' + itemId;
+        var textId = '#item-' + itemId;
         var quantity = $(textId).val();
         if (quantity > 1) {
             $.ajax({
@@ -15,30 +16,33 @@ $(function () {
                 contentType: 'application/json',
                 url: '/decrementitem',
                 data: data,
-                success: function () {
+                success: function (data) {
                     $(textId).val(quantity - 1);
+                    $('#subTotal').html(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.subTotal));
+                    $('[itemId=' + itemId + ']').filter('.itemTotal').html(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.itemTotal));
                 },
                 error: function (e) {
                     alert("failed");
-                    console.log(e);
                 }
             });
         }
     });
 
     $('.incrementItemBtn').on('click', function (e) {
+        var itemId = this.getAttribute('itemId')
         var data = 'id=' + this.getAttribute('itemId');
         var textId = '#item-' + this.getAttribute('itemId');
         var quantity = $(textId).val();
-        console.log(data);
         $.ajax({
             type: 'GET',
             dataType: 'json',
             contentType: 'application/json',
             url: '/incrementitem',
             data: data,
-            success: function () {
+            success: function (data) {
                 $(textId).val(quantity * 1 + 1);
+                $('#subTotal').html(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.subTotal));
+                $('[itemId=' + itemId + ']').filter('.itemTotal').html(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.itemTotal));
             },
             error: function () {
                 alert("failed");

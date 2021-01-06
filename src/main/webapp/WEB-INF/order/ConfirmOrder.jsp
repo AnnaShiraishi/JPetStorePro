@@ -17,7 +17,7 @@
 --%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
-<div id="BackLink"><a href="/main">Return to Main Menu</a></div>
+<div id="BackLink"><a class="card-link back-link" href="/neworderform"> < Order Form </a></div>
 
 <div id="Catalog" class="container">Please confirm the information below and then
 press continue...
@@ -104,6 +104,6 @@ press continue...
 
 </table>
 <form action="${pageContext.request.contextPath}/confirmorder" method="post">
-	<input type="submit" value="Continue">
+	<input type="submit" value="Continue" class="btn btn-success">
 </form>
 <%@ include file="../common/IncludeBottom.jsp"%>

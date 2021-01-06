@@ -95,6 +95,10 @@
         <servlet-name>EmailPINServlet</servlet-name>
         <servlet-class>org.csu.jpetstore.web.servlet.ajax.EmailPINServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PreviewProductDescriptionServlet</servlet-name>
+        <servlet-class>org.csu.jpetstore.web.servlet.ajax.PreviewProductDescriptionServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
@@ -187,5 +191,9 @@
     <servlet-mapping>
         <servlet-name>EmailPINServlet</servlet-name>
         <url-pattern>/emailPIN</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PreviewProductDescriptionServlet</servlet-name>
+        <url-pattern>/previewproductdescription</url-pattern>
     </servlet-mapping>
 </web-app>

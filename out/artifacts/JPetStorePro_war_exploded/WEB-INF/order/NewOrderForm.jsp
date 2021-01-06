@@ -17,77 +17,126 @@
 --%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
+<div id="BackLink">
+	<a class="card-link back-link" href="${pageContext.request.contextPath}/checkout" class="Button">
+		< Check Out
+	</a>
+</div>
+
 <div id="Catalog" class="container">
 	<form action="${pageContext.request.contextPath}/vieworder" method="post">
 
-	<table class="table table-hover">
-		<tr>
-			<th colspan=2>Payment Details</th>
-		</tr>
-		<tr>
-			<td>Card Type:</td>
-			<td>
-				<select name="cardType">
-					<option value="Visa"<c:if test="${order.cardType == 'Visa'}">selected="selected"</c:if>>Visa</option>
-					<option value="MasterCard"<c:if test="${order.cardType == 'MasterCard'}">selected="selected"</c:if>>MasterCard</option>
-					<option value="American Express"<c:if test="${order.cardType == 'American Express'}">selected="selected"</c:if>>American Express</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>Card Number:</td>
-			<td><input name="creditCard" value="${order.creditCard}" /> * Use a fake
-			number!</td>
-		</tr>
-		<tr>
-			<td>Expiry Date (MM/YYYY):</td>
-			<td><input name="expiryDate" value="${order.expiryDate}" /></td>
-		</tr>
-		<tr>
-			<th colspan=2>Billing Address</th>
-		</tr>
+		<h4>Payment Details</h4>
 
-		<tr>
-			<td>First name:</td>
-			<td><input name="billToFirstName" value="${order.billToFirstName}" /></td>
-		</tr>
-		<tr>
-			<td>Last name:</td>
-			<td><input name="billToLastName" value="${order.billToLastName}" /></td>
-		</tr>
-		<tr>
-			<td>Address 1:</td>
-			<td><input name="billAddress1" value="${order.billAddress1}" /></td>
-		</tr>
-		<tr>
-			<td>Address 2:</td>
-			<td><input name="billAddress2" value="${order.billAddress2}" /></td>
-		</tr>
-		<tr>
-			<td>City:</td>
-			<td><input name="billCity" value="${order.billCity}" /></td>
-		</tr>
-		<tr>
-			<td>State:</td>
-			<td><input name="billState" value="${order.billState}" /></td>
-		</tr>
-		<tr>
-			<td>Zip:</td>
-			<td><input name="billZip" value="${order.billZip}" /></td>
-		</tr>
-		<tr>
-			<td>Country:</td>
-			<td><input name="billCountry" value="${order.billCountry}" /></td>
-		</tr>
+		<div class="form-group row">
+			<label for="cardType" class="col-sm-2 col-form-label">Card Type</label>
+			<div class="col-sm-8">
+			<select name="cardType" class="form-control custom-select" id="cardType">
+				<option value="Visa"<c:if test="${order.cardType == 'Visa'}">selected="selected"</c:if>>Visa</option>
+				<option value="MasterCard"<c:if test="${order.cardType == 'MasterCard'}">selected="selected"</c:if>>MasterCard</option>
+				<option value="American Express"<c:if test="${order.cardType == 'American Express'}">selected="selected"</c:if>>American Express</option>
+			</select>
+			</div>
+		</div>
 
-		<tr>
-			<td colspan=2><input type="checkbox" name="shippingAddressRequired" />
-			Ship to different address...</td>
-		</tr>
+		<div class="form-group row">
+			<label for="cardNumber" class="col-sm-2 col-form-label">Card Number</label>
+			<div class="col-sm-8">
+				<input name="creditCard" class="form-control" id="cardNumber" value="${order.creditCard}" />
+			</div>
+		</div>
 
-	</table>
+		<div class="form-group row">
+			<label for="expireDate" class="col-sm-2 col-form-label">Expiry Date (MM/YYYY)</label>
+			<div class="col-sm-8">
+				<input name="expiryDate" class="form-control" id="expireDate" value="${order.expiryDate}" />
+			</div>
+		</div>
 
-		<input type="submit" value="Continue" />
+		<h4>Billing Address</h4>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="inputFirstName">First Name</label>
+				<input class="form-control" name="billToFirstName" value="${account.firstName}" id="inputFirstName" />
+			</div>
+			<div class="form-group col-md-6">
+				<label for="inputLastName">Last Name</label>
+				<input class="form-control" name="billToLastName" value="${account.lastName}" id="inputLastName" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputAddress1">Address 1</label>
+			<input type="text" class="form-control" name="billAddress1" value="${account.address1}" id="inputAddress1">
+		</div>
+		<div class="form-group">
+			<label for="inputAddress2">Address 2</label>
+			<input type="text" class="form-control" name="billAddress2" value="${account.address2}" id="inputAddress2">
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-3">
+				<label for="inputCity">City</label>
+				<input type="text" class="form-control" name="billCity" value="${account.city}" id="inputCity">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputState">State</label>
+				<input type="text" class="form-control" name="billState" value="${account.state}" id="inputState">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputZip">Zip</label>
+				<input type="text" class="form-control" name="billZip" value="${account.zip}" id="inputZip">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputCountry">Country</label>
+				<input type="text" class="form-control" name="billCountry" value="${account.country}" id="inputCountry">
+			</div>
+		</div>
+
+		<div class="custom-control custom-switch">
+			<input type="checkbox" class="custom-control-input" id="shippingAddressRequired" name="shippingAddressRequired" data-toggle="collapse" data-target="#shipAddressForm" aria-expanded="false" aria-controls="shipAddressForm"/>
+			<label class="custom-control-label" for="shippingAddressRequired">Ship to different address</label>
+		</div>
+
+		<div class="collapse" id="shipAddressForm">
+			<h4>Shipping Address</h4>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputFirstName">First Name</label>
+					<input class="form-control" name="shipToFirstName" id="inputFirstName" />
+				</div>
+				<div class="form-group col-md-6">
+					<label for="inputLastName">Last Name</label>
+					<input class="form-control" name="shipToLastName" id="inputLastName" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputAddress1">Address 1</label>
+				<input type="text" class="form-control" name="shipAddress1" id="inputAddress1">
+			</div>
+			<div class="form-group">
+				<label for="inputAddress2">Address 2</label>
+				<input type="text" class="form-control" name="shipAddress2" id="inputAddress2">
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="inputCity">City</label>
+					<input type="text" class="form-control" name="shipCity" id="inputCity">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="inputState">State</label>
+					<input type="text" class="form-control" name="shipState" id="inputState">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="inputZip">Zip</label>
+					<input type="text" class="form-control" name="shipZip" id="inputZip">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="inputCountry">Country</label>
+					<input type="text" class="form-control" name="shipCountry" id="inputCountry">
+				</div>
+			</div>
+		</div>
+
+		<input type="submit" class="btn btn-success" value="Continue" />
 
 	</form>
 </div>

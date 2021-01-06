@@ -18,7 +18,7 @@
 <%@ include file="../common/IncludeTop.jsp"%>
 
 <div id="BackLink">
-	<a href="${pageContext.request.contextPath}/main"> Return to Main Menu </a>
+	<a class="card-link back-link" href="${pageContext.request.contextPath}/main"> < Main Menu </a>
 </div>
 
 <div id="Catalog" class="container">
@@ -31,7 +31,7 @@
 		<th>Name</th>
 	</tr>
 	<c:forEach var="product" items="${productList}">
-		<tr>
+		<tr class="productItem" productId="${product.productId}">
 			<td><a href="${pageContext.request.contextPath}/product?id=${product.productId}">${product.productId}</a></td>
 			<td>${product.name}</td>
 		</tr>
@@ -40,6 +40,7 @@
 
 </div>
 
+<div id="productPreview">
+</div>
+
 <%@ include file="../common/IncludeBottom.jsp"%>
-
-

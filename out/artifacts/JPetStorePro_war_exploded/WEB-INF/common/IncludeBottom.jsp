@@ -39,5 +39,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/cart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/searchautocomplete.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/signup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/item.js"></script>
 </body>
 </html>

@@ -51,6 +51,13 @@ public class Cart implements Serializable {
     return itemMap.containsKey(itemId);
   }
 
+  public CartItem getCartItem(String itemId) {
+    for(int i = 0;i < itemList.size(); i ++){
+      if (Objects.equals(itemList.get(i).getItem().getItemId(), itemId)) return itemList.get(i);
+    }
+    return null;
+  }
+
   /**
    * Adds the item.
    *

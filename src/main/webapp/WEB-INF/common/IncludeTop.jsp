@@ -55,29 +55,16 @@
 
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent" style="alignment: center">
             <ul class="navbar-nav mr-auto justify-content-center">
-                <li class="nav-item">
-
-                </li>
-                <li class="nav-item">
-
-                </li>
-                <li class="nav-item">
-
-                </li>
-                <li class="nav-item">
-
-                </li>
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Category
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=fish">fish</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=dogs">dogs</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=reptiles">reptiles</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=cats">cats</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=cats">cats</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=fish">Fish</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=dogs">Dogs</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=reptiles">Reptiles</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=cats">Cats</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=birds">Birds</a>
                     </div>
                 </li>
                 <c:if test="${sessionScope.authenticated == null}">
@@ -92,7 +79,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/myaccount">My Account</a>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/signout">ign Out</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/signout">Sign Out</a>
                         </div>
                     </li>
                 </c:if>

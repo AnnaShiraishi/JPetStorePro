@@ -18,19 +18,16 @@
 <%@ include file="../common/IncludeTop.jsp"%>
 
 <div id="BackLink">
-	<a href="${pageContext.request.contextPath}/cart" class="Button">
-	Return to Cart
+	<a class="card-link back-link" href="${pageContext.request.contextPath}/cart" class="Button">
+	< Cart
 	</a>
 </div>
 
 <div id="Catalog" class="container">
 
 <table class="table table-hover">
-	<tr>
-		<td>
 		<h2>Checkout Summary</h2>
 
-		<table>
 
 			<tr>
 				<td><b>Item ID</b></td>
@@ -63,11 +60,9 @@
 				<td colspan="7">Sub Total: <fmt:formatNumber
 					value="${cart.subTotal}" pattern="$#,##0.00" /></td>
 			</tr>
-		</table>
-	</tr>
 </table>
 	<c:if test="${cart.numberOfItems > 0}">
-		<a href="${pageContext.request.contextPath}/neworderform" class="Button">Proceed to New Form</a>
+		<a href="${pageContext.request.contextPath}/neworderform" class="btn btn-success">Proceed to New Form</a>
 	</c:if>
 </div>
 
