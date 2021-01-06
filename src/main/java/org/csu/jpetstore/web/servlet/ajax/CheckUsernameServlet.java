@@ -18,7 +18,7 @@ public class CheckUsernameServlet extends HttpServlet {
         if (accountService.getAccount(username) != null) {
             resp.getWriter().println(1);
         } else {
-            resp.getWriter().println(2);
+            resp.getWriter().println(0);
         }
     }
 

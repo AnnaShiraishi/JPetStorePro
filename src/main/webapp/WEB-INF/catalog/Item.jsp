@@ -23,11 +23,11 @@
 </a>
 </div>
 
-<div id="Catalog">
+<div id="Catalog" class="container">
 <form action="${pageContext.request.contextPath}/cart" method="post">
-<table>
+<table class="table table-hover">
 	<tr>
-		<td>${product.description}</td>
+		<td><img src="${pageContext.servletContext.contextPath}/images/${product.picture}" /> ${product.description}</td>
 	</tr>
 	<tr>
 <%--		input--%>
@@ -57,7 +57,7 @@
 	<tr>
 		<td>
 			<input hidden name="itemId" value="${item.itemId}">
-			<input type="submit" value="Add to Cart">
+			<input type="submit" value="Add to Cart" class="btn btn-success">
 		</td>
 	</tr>
 </table>

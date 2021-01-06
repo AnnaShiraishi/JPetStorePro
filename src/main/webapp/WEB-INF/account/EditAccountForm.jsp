@@ -17,13 +17,13 @@
 --%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
-<div id="Catalog">
+<div id="Catalog" class="container">
 
 	<form action="${pageContext.request.contextPath}/myaccount" method="post">
 
 	<h3>User Information</h3>
 
-	<table>
+	<table class="table table-hover">
 		<tr>
 			<td>User ID:</td>
 			<td>${account.username}</td>

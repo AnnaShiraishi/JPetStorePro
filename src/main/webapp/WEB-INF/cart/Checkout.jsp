@@ -23,9 +23,9 @@
 	</a>
 </div>
 
-<div id="Catalog">
+<div id="Catalog" class="container">
 
-<table>
+<table class="table table-hover">
 	<tr>
 		<td>
 		<h2>Checkout Summary</h2>

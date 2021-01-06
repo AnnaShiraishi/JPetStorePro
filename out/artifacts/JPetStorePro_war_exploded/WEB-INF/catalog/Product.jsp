@@ -21,11 +21,11 @@
 	<a href="${pageContext.request.contextPath}/category?id=${product.categoryId}">Return to ${product.categoryId}</a>
 </div>
 
-<div id="Catalog">
+<div id="Catalog" class="container">
 
 <h2>${product.name}</h2>
 <form action="${pageContext.request.contextPath}/cart" method="post">
-	<table>
+	<table class="table table-hover">
 		<tr>
 			<th>Item ID</th>
 			<th>Product ID</th>
@@ -43,14 +43,10 @@
 					pattern="$#,##0.00" /></td>
 				<td>
 					<input hidden name="itemId" value="${item.itemId}">
-					<input type="submit" value="Add to Cart">
+					<input type="submit" value="Add to Cart" class="btn btn-success">
 				</td>
 			</tr>
 		</c:forEach>
-		<tr>
-			<td>
-			</td>
-		</tr>
 	</table>
 </form>
 </div>

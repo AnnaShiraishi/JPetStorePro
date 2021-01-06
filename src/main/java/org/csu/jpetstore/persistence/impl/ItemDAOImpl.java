@@ -21,6 +21,7 @@ public class ItemDAOImpl implements ItemDAO {
             "\tI.PRODUCTID AS \"product.productId\",\n" +
             "\tNAME AS \"product.name\",\n" +
             "\tDESCN AS \"product.description\",\n" +
+            "\tPICTURE AS \"product.picture\",\n" +
             "\tCATEGORY AS \"product.categoryId\",\n" +
             "\tSTATUS,\n" +
             "\tATTR1 AS attribute1,\n" +
@@ -42,6 +43,7 @@ public class ItemDAOImpl implements ItemDAO {
             "\tI.PRODUCTID AS \"product.productId\",\n" +
             "\tNAME AS \"product.name\",\n" +
             "\tDESCN AS \"product.description\",\n" +
+            "\tPICTURE AS \"product.picture\",\n" +
             "\tCATEGORY AS \"product.categoryId\",\n" +
             "\tSTATUS,\n" +
             "\tATTR1 AS attribute1,\n" +
@@ -124,6 +126,7 @@ public class ItemDAOImpl implements ItemDAO {
                 product.setName(resultSet.getString("product.name"));
                 product.setDescription(resultSet.getString("product.description"));
                 product.setCategoryId(resultSet.getString("product.categoryid"));
+                product.setPicture(resultSet.getString("product.picture"));
                 item.setStatus(resultSet.getString("status"));
                 item.setAttribute1(resultSet.getString("attribute1"));
                 item.setAttribute1(resultSet.getString("attribute2"));
@@ -159,6 +162,7 @@ public class ItemDAOImpl implements ItemDAO {
                 product.setName(resultSet.getString("product.name"));
                 product.setDescription(resultSet.getString("product.description"));
                 product.setCategoryId(resultSet.getString("product.categoryid"));
+                product.setPicture(resultSet.getString("product.picture"));
                 item.setStatus(resultSet.getString("status"));
                 item.setAttribute1(resultSet.getString("attribute1"));
                 item.setAttribute2(resultSet.getString("attribute2"));

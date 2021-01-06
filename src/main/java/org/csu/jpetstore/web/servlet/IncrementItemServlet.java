@@ -29,7 +29,7 @@ public class IncrementItemServlet extends HttpServlet {
             cartService.incrementQuantityByItemId(account, id);
             logger.info(String.format("User (%s) Add One More Item (%s).", account.getUsername(), id));
         }
-        resp.sendRedirect(req.getContextPath() + "/cart");
+        resp.getWriter().println(1);
     }
 
     @Override

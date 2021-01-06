@@ -17,15 +17,31 @@
 --%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
-<div id="Catalog"><form action="signon" method="post">
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-	<p>Please enter your username and password.</p>
-	<p>Username:<input type="text" name="username"/> <br />
-	Password:<input type="password" name="password"/></p>
-	<div class="g-recaptcha" data-sitekey="6Ldoh-EZAAAAAC2d08S9f8JZqsD7BxGZggk8qB2V" align="center"></div>
-	<p style="color: red">${requestScope.message}</p>
-	<input type="submit" name="signon" value="Login"/>
+<div id="Catalog" class="container">
+	<div class="col-sm">
+	</div>
+	<div class="col-sm">
+		<form action="signon" method="post">
+			<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+			<div class="form-group">
+			<h3>Login</h3>
+			<small>Please enter your username and password.</small>
+			</div>
+			<div class="form-group">
+				<label>Username</label>
+				<input type="text" name="username" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<lable>Password</lable>
+				<input type="password" name="password" class="form-control"/>
+			</div>
+			<div class="g-recaptcha" data-sitekey="6Ldoh-EZAAAAAC2d08S9f8JZqsD7BxGZggk8qB2V" align="center"></div>
+			<p style="color: red">${requestScope.message}</p>
+			<input type="submit" name="signon" value="Login" class="btn btn-success" />
 
-</form> Need a user name and password? <a href="${pageContext.request.contextPath}/signup">Register Now!</a></div>
-
+		</form> Need a user name and password? <a href="${pageContext.request.contextPath}/signup">Register Now!</a>
+	</div>
+	<div class="col-sm">
+	</div>
+</div>
 <%@ include file="../common/IncludeBottom.jsp"%>

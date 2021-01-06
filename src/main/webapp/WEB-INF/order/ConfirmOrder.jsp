@@ -19,10 +19,10 @@
 
 <div id="BackLink"><a href="/main">Return to Main Menu</a></div>
 
-<div id="Catalog">Please confirm the information below and then
+<div id="Catalog" class="container">Please confirm the information below and then
 press continue...
 
-<table>
+<table class="table table-hover">
 	<tr>
 		<th align="center" colspan="2"><font size="4"><b>Order</b></font>
 		<br />

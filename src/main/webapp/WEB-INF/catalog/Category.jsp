@@ -21,11 +21,11 @@
 	<a href="${pageContext.request.contextPath}/main"> Return to Main Menu </a>
 </div>
 
-<div id="Catalog">
+<div id="Catalog" class="container">
 
 <h2>${categoryName}</h2>
 
-<table>
+<table class="table table-hover">
 	<tr>
 		<th>Product ID</th>
 		<th>Name</th>

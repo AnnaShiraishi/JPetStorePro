@@ -19,9 +19,9 @@
 
 <div id="BackLink"><a href="${pageContext.request.contextPath}/main">Return to Main Menu</a></div>
 
-<div id="Catalog">
-	<h1>You have creat a new order.</h1>
-	<table align="center">
+<div id="Catalog" class="container">
+	<h3>You have creat a new order.</h3>
+	<table align="center" class="table table-hover">
 		<tr>
 			<th align="center" colspan="2">Order #${order.orderId}
 				<fmt:formatDate value="${order.orderDate}"

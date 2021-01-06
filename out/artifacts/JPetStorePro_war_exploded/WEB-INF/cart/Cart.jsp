@@ -21,10 +21,10 @@
 
 <div id="Catalog">
 
-<div id="Cart">
+<div id="Cart" class="container-fluid">
 
 <h2>Shopping Cart</h2>
-	<table id="cart">
+	<table id="cart" class="table table-hover">
 		<tr>
 			<th><b>Item ID</b></th>
 			<th><b>Product ID</b></th>
@@ -51,27 +51,29 @@
 				${cartItem.item.attribute5} ${cartItem.item.product.name}</td>
 				<td>${cartItem.inStock}</td>
 				<td>
-					<a href="${pageContext.request.contextPath}/decrementitem?id=${cartItem.item.itemId}" class="Button">-</a>
-					<input type="text" size="3" value="${cartItem.quantity}" readonly="">
-					<a href="${pageContext.request.contextPath}/incrementitem?id=${cartItem.item.itemId}" class="Button">+</a>
+					<form class="form-inline">
+					<a class="btn decrementItemBtn control" itemId="${cartItem.item.itemId}">-</a>
+					<input type="text" size="3" value="${cartItem.quantity}" class="mr-sm-2 form-control" id="item-${cartItem.item.itemId}" />
+					<a class="btn incrementItemBtn control" itemId="${cartItem.item.itemId}">+</a>
+					</form>
 				</td>
 				<td><fmt:formatNumber value="${cartItem.item.listPrice}"
 									  pattern="$#,##0.00" /></td>
 				<td><fmt:formatNumber value="${cartItem.total}"
 									  pattern="$#,##0.00" /></td>
-				<td><a href="${pageContext.request.contextPath}/removeitem?id=${cartItem.item.itemId}" class="Button">Remove</a></td>
+				<td><a href="${pageContext.request.contextPath}/removeitem?id=${cartItem.item.itemId}" class="btn btn-outline-success">Remove</a></td>
 			</tr>
 		</c:forEach>
 		<tr>
 			<td colspan="7">Sub Total: <fmt:formatNumber value="${cart.subTotal}" pattern="$#,##0.00" />
-			<a href="${pageContext.request.contextPath}/clearcart" class="Button">Clear Cart</a>
+			<a href="${pageContext.request.contextPath}/clearcart" class="btn btn-outline-success">Clear Cart</a>
 			</td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>
 	<c:if test="${cart.numberOfItems > 0}">
 		<p style="color: red">${message}</p>
-		<a href="/checkout" class="Button">Proceed to Checkout</a>
+		<a href="/checkout" class="btn btn-outline-success">Proceed to Checkout</a>
 	</c:if>
 </div>
 

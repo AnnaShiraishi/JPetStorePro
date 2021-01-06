@@ -19,9 +19,9 @@
 
 <div id="BackLink"><a href="${pageContext.request.contextPath}/main">Return to Main Menu</a></div>
 
-<div id="Catalog">
+<div id="Catalog" class="container">
 
-<table>
+<table class="table table-hover">
 	<tr>
 		<th>&nbsp;</th>
 		<th>Product ID</th>
@@ -42,9 +42,6 @@
 			<td>${product.name}</td>
 		</tr>
 	</c:forEach>
-	<tr>
-		<td></td>
-	</tr>
 
 </table>
 

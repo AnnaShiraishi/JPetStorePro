@@ -17,162 +17,123 @@
 --%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
-<script type="text/javascript">
-	var isCheckUsername = false;
-	var isCheckPasswordMatched = false;
-
-	function checkUsername() {
-		var name = $('#username').val();
-		$.post('${pageContext.request.contextPath}/checkusername', {username:name}, function (data, status) {
-			if (data == 1) {
-				$("#check-username-span").html("<td><font color='red'>! USERNAME EXISTS !</font></td>");
-				isCheckUsername = false;
-			} else {
-				$("#check-username-span").html("");
-				isCheckUsername = true;
-			}
-		})
-	}
-
-	function checkPasswordMatched() {
-		var password = $('#password').val();
-		var repeatedPassword = $('#repeatedPassword').val();
-
-		if (password != repeatedPassword) {
-			$("#check-password-span").html("<td><font color='red'>! PASSWORD UNMATCHED !</font></td>");
-			isCheckPasswordMatched = false;
-		} else {
-			$("#check-password-span").html("");
-			isCheckPasswordMatched = true;
-		}
-	}
-
-	function signup() {
-		if (isCheckPasswordMatched && isCheckUsername) {
-			$.ajax({
-				type: "POST",
-				dataType: "json",//服务器返回的数据类型
-				contentType: "application/json",//post请求的信息格式
-				url: "${pageContext.request.contextPath}/signup" ,
-				data: $('#signup').serialize(),
-				success: function (result) {
-					console.log(result);//在浏览器中打印服务端返回的数据(调试用)
-					if (result.resultCode == 200) {
-						alert("SUCCESS");
-					};
-
-				},
-				error : function() {
-					alert("! FAILED !");
-				}
-			});
-		} else {
-			console.log('check');
-		}
-	}
-</script>
-
-<div id="Catalog">
-	<form id="signup" onsubmit="return false" action="#" method="post">
+<div id="Catalog" class="container">
+	<form id="signup" action="${pageContext.request.contextPath}/signup" method="post">
 
 	<h3 class="infoTitle">User Information</h3>
 
-	<table>
-		<tr>
-			<td>User ID:</td>
-			<td><input id="username" name="username"onblur="checkUsername()" /><span id="check-username-span"></span></td>
-		</tr>
-		<tr>
-			<td>New password:</td>
-			<td><input id="password" name="password" onblur="checkPasswordMatched()"/></td>
-		</tr>
-		<tr>
-			<td>Repeat password:</td>
-			<td><input id="repeatedPassword" name="repeatedPassword" onblur="checkPasswordMatched()"/><span id="check-password-span"></span></td>
-		</tr>
-	</table>
+		<div class="form-group">
+			<label for="username">User Name</label>
+			<input type="text" class="form-control" name="username" value="${account.username}" id="username" />
+			<small id="check-username-span"></small>
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="text" class="form-control" name="password" value="${account.password}" id="password" />
+		</div>
+		<div class="form-group">
+			<label for="repeatedPassword">Repeat Password</label>
+			<input type="text" class="form-control" name="repeatedPassword" id="repeatedPassword" />
+			<small id="check-password-span"></small>
+		</div>
 
 		<h3 class="infoTitle">Account Information</h3>
 
-		<table>
-			<tr>
-				<td>First name:</td>
-				<td><input name="firstName" value="${account.firstName}"></td>
-			</tr>
-			<tr>
-				<td>Last name:</td>
-				<td><input name="lastName" value="${account.lastName}"></td>
-			</tr>
-			<tr>
-				<td>Email:</td>
-				<td>
-					<input name="email" value="${account.email}">
-				</td>
-			</tr>
-			<tr>
-				<td>Phone:</td>
-				<td><input name="phone" value="${account.phone}"></td>
-			</tr>
-			<tr>
-				<td>Address 1:</td>
-				<td><input name="addr1" value="${account.address1}"></td>
-			</tr>
-			<tr>
-				<td>Address 2:</td>
-				<td><input name="addr2" value="${account.address2}"></td>
-			</tr>
-			<tr>
-				<td>City:</td>
-				<td><input name="city" value="${account.city}"></td>
-			</tr>
-			<tr>
-				<td>State:</td>
-				<td><input name="state" value="${account.state}"></td>
-			</tr>
-			<tr>
-				<td>Zip:</td>
-				<td><input name="zip" value="${account.zip}"></td>
-			</tr>
-			<tr>
-				<td>Country:</td>
-				<td><input name="country" value="${account.country}"></td>
-			</tr>
-		</table>
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<label for="inputFirstName">First Name</label>
+				<input class="form-control" name="firstName" value="${account.firstName}" id="inputFirstName" />
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputLastName">Last Name</label>
+				<input class="form-control" name="lastName" value="${account.lastName}" id="inputLastName" />
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputPhone">Phone</label>
+				<input class="form-control" name="phone" value="${account.phone}" id="inputPhone" />
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="inputEmail">Email</label>
+				<div class="input-group">
+					<input type="email" class="form-control" name="email" value="${account.email}" id="inputEmail" aria-describedby="basic-addon2">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button" id="sendEmailBtn">Send Email</button>
+					</div>
+				</div>
+				<small id="check-email-span"></small>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="inputPIN">PIN</label>
+				<input class="form-control" name="PIN" placeholder="Please Enter the PIN you reserved." id="inputPIN" />
+				<small id="check-PIN-span"></small>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputAddress1">Address 1</label>
+			<input type="text" class="form-control" name="addr1" value="${account.address1}" id="inputAddress1">
+		</div>
+		<div class="form-group">
+			<label for="inputAddress2">Address 2</label>
+			<input type="text" class="form-control" name="addr2" value="${account.address2}" id="inputAddress2">
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-3">
+				<label for="inputCity">City</label>
+				<input type="text" class="form-control" name="city" id="inputCity">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputState">State</label>
+				<input type="text" class="form-control" name="state" id="inputState">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputZip">Zip</label>
+				<input type="text" class="form-control" name="zip" id="inputZip">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputCountry">Country</label>
+				<input type="text" class="form-control" name="country" id="inputCountry">
+			</div>
+		</div>
 
 		<h3 class="infoTitle">Profile Information</h3>
 
-		<table>
-			<tr>
-				<td>Language Preference:</td>
-				<td><select name="languagePreference">
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="languagePreference">Language Preference</label>
+				<select id="languagePreference" name="languagePreference" class="form-control">
 					<option value="english"<c:if test="${account.languagePreference == 'english'}">selected="selected"</c:if>>English</option>
 					<option value="japanese"<c:if test="${account.languagePreference == 'japanese'}">selected="selected"</c:if>>Japanese</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td>Favourite Category:</td>
-				<td>
-					<select name="favoriteCategory">
-						<option value="FISH"<c:if test="${account.favouriteCategoryId == 'FISH'}">selected="selected"</c:if>>Fish</option>
-						<option value="DOGS"<c:if test="${account.favouriteCategoryId == 'DOGS'}">selected="selected"</c:if>>Dogs</option>
-						<option value="REPTILES"<c:if test="${account.favouriteCategoryId == 'REPTILES'}">selected="selected"</c:if>>Reptiles</option>
-						<option value="CATS"<c:if test="${account.favouriteCategoryId == 'CATS'}">selected="selected"</c:if>>Cats</option>
-						<option value="BIRDS"<c:if test="${account.favouriteCategoryId == 'BIRDS'}">selected="selected"</c:if>>Birds</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>Enable MyList</td>
-				<td><input name="listOpt" type="checkbox"<c:if test="${account.listOption}">checked</c:if>></td>
-			</tr>
-			<tr>
-				<td>Enable MyBanner</td>
-				<td><input name="bannerOpt" type="checkbox"<c:if test="${account.bannerOption}">checked</c:if>></td>
-			</tr>
+				</select>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="favoriteCategory">Favourite Category</label>
+				<select id="favoriteCategory" name="favoriteCategory" class="form-control">
+					<option value="FISH"<c:if test="${account.favouriteCategoryId == 'FISH'}">selected="selected"</c:if>>Fish</option>
+					<option value="DOGS"<c:if test="${account.favouriteCategoryId == 'DOGS'}">selected="selected"</c:if>>Dogs</option>
+					<option value="REPTILES"<c:if test="${account.favouriteCategoryId == 'REPTILES'}">selected="selected"</c:if>>Reptiles</option>
+					<option value="CATS"<c:if test="${account.favouriteCategoryId == 'CATS'}">selected="selected"</c:if>>Cats</option>
+					<option value="BIRDS"<c:if test="${account.favouriteCategoryId == 'BIRDS'}">selected="selected"</c:if>>Birds</option>
+				</select>
+			</div>
+		</div>
 
-		</table>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<input name="listOpt" class="form-check-input" type="checkbox"<c:if test="${account.listOption}">checked</c:if>>
+				<label class="form-check-label" for="gridCheck">Enable MyList</label>
+			</div>
+			<div class="form-group col-md-6">
+				<input name="bannerOpt" class="form-check-input" type="checkbox"<c:if test="${account.bannerOption}">checked</c:if>>
+				<label class="form-check-label" for="gridCheck">Enable MyBanner</label>
+			</div>
+		</div>
+
 		<p style="color: red">${requestScope.message}</p>
-	<input name="editAccount" value="Save Account Information And Send Email" type="button" onclick="signup()"><br>
+
+	<input name="editAccount" id="editAccount" value="Creat New Account" class="btn btn-primary my-1" type="button" /><br>
 
 	</form>
 </div>

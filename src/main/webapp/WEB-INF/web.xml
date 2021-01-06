@@ -87,6 +87,14 @@
         <servlet-name>CheckUsernameServlet</servlet-name>
         <servlet-class>org.csu.jpetstore.web.servlet.ajax.CheckUsernameServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchAutoCompleteServlet</servlet-name>
+        <servlet-class>org.csu.jpetstore.web.servlet.ajax.SearchAutoCompleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmailPINServlet</servlet-name>
+        <servlet-class>org.csu.jpetstore.web.servlet.ajax.EmailPINServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
@@ -171,5 +179,13 @@
     <servlet-mapping>
         <servlet-name>CheckUsernameServlet</servlet-name>
         <url-pattern>/checkusername</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchAutoCompleteServlet</servlet-name>
+        <url-pattern>/searchautocomplete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmailPINServlet</servlet-name>
+        <url-pattern>/emailPIN</url-pattern>
     </servlet-mapping>
 </web-app>

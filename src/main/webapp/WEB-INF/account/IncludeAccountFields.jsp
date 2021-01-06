@@ -17,7 +17,7 @@
 --%>
 <h3>Account Information</h3>
 
-<table>
+<table class="table table-hover">
 	<tr>
 		<td>First name:</td>
 		<td><input name="firstName" value="${account.firstName}"></td>
@@ -62,7 +62,7 @@
 
 <h3>Profile Information</h3>
 
-<table>
+<table class="table table-hover">
 	<tr>
 		<td>Language Preference:</td>
 		<td><select name="languagePreference">

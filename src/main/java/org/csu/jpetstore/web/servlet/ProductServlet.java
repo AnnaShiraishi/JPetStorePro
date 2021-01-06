@@ -33,6 +33,7 @@ public class ProductServlet extends HttpServlet {
             Account account = (Account) session.getAttribute("account");
             logger.info(String.format("User (%s) View the Product (%s).", account.getUsername(), product));
         }
+        System.out.print(product.getPicture());
     }
 
     @Override

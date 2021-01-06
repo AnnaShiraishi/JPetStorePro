@@ -17,10 +17,10 @@
 --%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
-<div id="Catalog">
+<div id="Catalog" class="container">
 	<form action="${pageContext.request.contextPath}/vieworder" method="post">
 
-	<table>
+	<table class="table table-hover">
 		<tr>
 			<th colspan=2>Payment Details</th>
 		</tr>

@@ -16,24 +16,28 @@
 
 --%>
 </div>
-<div id="smallCart" style="right: 0px;">Cart</div>
-<div id="cartButton" class="hide" style="right: 0px;">Cart</div>
+<%--<div id="smallCart" style="right: 0px;">Cart</div>--%>
+<%--<div id="cartButton" class="hide" style="right: 0px;">Cart</div>--%>
 <div id="Footer">
 
-<div id="PoweredBy">&nbsp;<a href="http://www.mybatis.org">www.mybatis.org</a>
-</div>
+	<nav class="navbar-expand-lg navbar navbar-dark bg-success justify-content-between">
+		<a class="navbar-brand" href="http://www.mybatis.org">www.mybatis.org</a>
 
-<div id="Banner"><c:if test="${sessionScope.account != null }">
-	<c:if test="${sessionScope.authenticated}">
-		<c:if test="${sessionScope.account.bannerOption}">
-          ${sessionScope.account.bannerName}
-        </c:if>
-	</c:if>
-</c:if></div>
+		<div id="Banner" class="form-inline my-2 my-lg-0"><c:if test="${sessionScope.account != null }">
+			<c:if test="${sessionScope.authenticated}">
+				<c:if test="${sessionScope.account.bannerOption}">
+					${sessionScope.account.bannerName}
+				</c:if>
+			</c:if>
+		</c:if></div>
+</div>
+</nav>
 
 </div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/cart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/cart.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/searchautocomplete.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/signup.js"></script>
 </body>
 </html>

@@ -17,9 +17,9 @@
 --%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
-<h2>My Orders</h2>
+<h3>My Orders</h3>
 
-<table>
+<table class="table table-hover">
 	<tr>
 		<th>Order ID</th>
 		<th>Date</th>

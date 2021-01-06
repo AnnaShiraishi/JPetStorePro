@@ -30,6 +30,7 @@ public class Product implements Serializable {
   private String categoryId;
   private String name;
   private String description;
+  private String picture;
 
   public String getProductId() {
     return productId;
@@ -61,6 +62,14 @@ public class Product implements Serializable {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public String getPicture() {
+    return picture;
+  }
+
+  public void setPicture(String picture) {
+    this.picture = picture;
   }
 
   @Override

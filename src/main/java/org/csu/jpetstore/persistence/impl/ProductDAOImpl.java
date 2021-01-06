@@ -15,7 +15,8 @@ public class ProductDAOImpl implements ProductDAO {
             "\tPRODUCTID,\n" +
             "\tNAME,\n" +
             "\tDESCN AS description,\n" +
-            "\tCATEGORY AS categoryId\n" +
+            "\tCATEGORY AS categoryId,\n" +
+            "\tPICTURE\n" +
             "FROM\n" +
             "\tPRODUCT\n" +
             "WHERE\n" +
@@ -24,7 +25,8 @@ public class ProductDAOImpl implements ProductDAO {
             "\tPRODUCTID,\n" +
             "\tNAME,\n" +
             "\tDESCN AS description,\n" +
-            "\tCATEGORY AS categoryId\n" +
+            "\tCATEGORY AS categoryId,\n" +
+            "\tPICTURE\n" +
             "FROM\n" +
             "\tPRODUCT\n" +
             "WHERE\n" +
@@ -33,7 +35,8 @@ public class ProductDAOImpl implements ProductDAO {
             "\tPRODUCTID,\n" +
             "\tNAME,\n" +
             "\tDESCN AS description,\n" +
-            "\tCATEGORY AS categoryId\n" +
+            "\tCATEGORY AS categoryId,\n" +
+            "\tPICTURE\n" +
             "FROM\n" +
             "\tPRODUCT\n" +
             "WHERE\n" +
@@ -47,12 +50,14 @@ public class ProductDAOImpl implements ProductDAO {
             PreparedStatement pStatement = connection.prepareStatement(GET_PRODUCT_LIST_BY_CATEGORY);
             pStatement.setString(1, categoryId);
             ResultSet resultSet = pStatement.executeQuery();
+
             while (resultSet.next()) {
                 Product product = new Product();
                 product.setProductId(resultSet.getString("productid"));
                 product.setName(resultSet.getString("name"));
                 product.setDescription(resultSet.getString("description"));
                 product.setCategoryId(resultSet.getString("categoryid"));
+                product.setPicture(resultSet.getString("picture"));
                 productList.add(product);
             }
             DBUtil.closeConnection(connection);
@@ -76,6 +81,7 @@ public class ProductDAOImpl implements ProductDAO {
                 product.setName(resultSet.getString("name"));
                 product.setDescription(resultSet.getString("description"));
                 product.setCategoryId(resultSet.getString("categoryid"));
+                product.setPicture(resultSet.getString("picture"));
             } else {
                 product = null;
             }

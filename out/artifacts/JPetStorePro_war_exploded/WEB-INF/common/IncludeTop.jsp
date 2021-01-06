@@ -47,70 +47,79 @@
 <body>
 
 <div id="Header">
+    <nav class="navbar-expand-lg navbar navbar-dark bg-success">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/main">JPetStore</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div id="Logo">
-    </div>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent" style="alignment: center">
+            <ul class="navbar-nav mr-auto justify-content-center">
+                <li class="nav-item">
 
-    <div id="Menu">
-        <div id="MenuContent">
-            <a href="${pageContext.request.contextPath}/cart"><img align="middle" name="img_cart"
-                                                                   src="${pageContext.servletContext.contextPath}/images/cart.gif"/></a>
+                </li>
+                <li class="nav-item">
 
-            <img align="middle" src="${pageContext.servletContext.contextPath}/images/separator.gif"/>
+                </li>
+                <li class="nav-item">
 
-            <c:if test="${sessionScope.authenticated == null}">
-                <a href="${pageContext.request.contextPath}/signon">Sign In</a>
-            </c:if>
-            <c:if test="${sessionScope.authenticated}">
-                <a href="${pageContext.request.contextPath}/signout">Sign Out</a>
-                <img align="middle" src="${pageContext.servletContext.contextPath}/images/separator.gif"/>
-                <a href="${pageContext.request.contextPath}/myaccount">My Account</a>
-            </c:if>
-            <img align="middle" src="${pageContext.servletContext.contextPath}/images/separator.gif"/>
-            <a href="${pageContext.request.contextPath}/help.html">?</a>
-        </div>
-    </div>
+                </li>
+                <li class="nav-item">
 
-	<nav id="quick-links-nav">
-		<div class="quick-links">
-			<div class="link-container">
-				<a href="${pageContext.request.contextPath}/main" class="quick-link">
-					JPetStore
-				</a>
-			</div>
-            <div class="link-container"><a class="quick-link" href="${pageContext.request.contextPath}/category?id=fish">fish</a></div>
-            <div class="ink-container"><a class="quick-link" href="${pageContext.request.contextPath}/category?id=dogs">dogs</a></div>
-            <div class="link-container"><a class="quick-link" href="${pageContext.request.contextPath}/category?id=reptiles">reptiles</a></div>
-            <div class="link-container"><a class="quick-link" href="${pageContext.request.contextPath}/category?id=cats">cats</a></div>
-            <div class="link-container"><a class="quick-link" href="${pageContext.request.contextPath}/category?id=birds">birds</a></div>
+                </li>
 
-            <div id="Search">
-                <div id="SearchContent">
-                    <form action="${pageContext.request.contextPath}/search" method="post">
-                        <input type="text" name="keyword" size="14"/>
-                        <input type="submit" name="searchProducts" value="Search"/>
-                        <span style="color: #ff0000">${searchMsg}</span>
-                    </form>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=fish">fish</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=dogs">dogs</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=reptiles">reptiles</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=cats">cats</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?id=cats">cats</a>
+                    </div>
+                </li>
+                <c:if test="${sessionScope.authenticated == null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/signon">Sign In</a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.authenticated}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ${sessionScope.account.username}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/myaccount">My Account</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/signout">ign Out</a>
+                        </div>
+                    </li>
+                </c:if>
+                <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/cart">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/help.html">Help</a>
+                </li>
+            </ul>
+
+            <form action="${pageContext.request.contextPath}/search" method="post" id="searchForm" class="form-inline my-2 my-lg-0">
+                <span class="nav-justified mr-sm-2" ><font color="white" id="searchMsg">${searchMsg}</font></span>
+
+                <div class="dropdown show">
+
+                    <input type="text" name="keyword" size="14" id="searchText" class="inputTag form-control mr-sm-2 dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="searchText" id="searchDropDown">
+                    </div>
                 </div>
-            </div>
-		</div>
-	</nav>
 
-<%--    <div id="QuickLinks">
-        <a href="${pageContext.request.contextPath}/category?id=fish"><img
-                src="${pageContext.servletContext.contextPath}/images/sm_fish.gif"/></a>
-        <img src="${pageContext.servletContext.contextPath}/images/separator.gif"/>
-        <a href="${pageContext.request.contextPath}/category?id=dogs"><img
-                src="${pageContext.servletContext.contextPath}/images/sm_dogs.gif"/></a>
-        <img src="${pageContext.servletContext.contextPath}/images/separator.gif"/>
-        <a href="${pageContext.request.contextPath}/category?id=reptiles"><img
-                src="${pageContext.servletContext.contextPath}/images/sm_reptiles.gif"/></a>
-        <img src="${pageContext.servletContext.contextPath}/images/separator.gif"/>
-        <a href="${pageContext.request.contextPath}/category?id=cats"><img
-                src="${pageContext.servletContext.contextPath}/images/sm_cats.gif"/></a>
-        <img src="${pageContext.servletContext.contextPath}/images/separator.gif"/>
-        <a href="${pageContext.request.contextPath}/category?id=birds"><img
-                src="${pageContext.servletContext.contextPath}/images/sm_birds.gif"/></a>
-    </div>--%>
+                <input type="submit" name="searchProducts" value="Search" id="searchProductsBtn" class="btn btn-outline-light my-2 my-sm-0" style="*:above: #e3f2fd;"/>
+            </form>
+        </div>
+    </nav>
+
+
 </div>
 <div id="Content">

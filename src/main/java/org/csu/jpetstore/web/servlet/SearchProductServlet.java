@@ -22,11 +22,6 @@ public class SearchProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(SEARCH_PRODUCTS).forward(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         catalogService = new CatalogServiceImpl();
         String keyword = req.getParameter("keyword");
         if (keyword == null || keyword.length() < 1) {
@@ -42,5 +37,10 @@ public class SearchProductServlet extends HttpServlet {
             }
             req.getRequestDispatcher(SEARCH_PRODUCTS).forward(req, resp);
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }
