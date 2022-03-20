@@ -22,6 +22,7 @@ public class AccountServiceImpl implements AccountService {
         account.setPassword(password);
         return accountDAO.getAccountByUsernameAndPassword(account);
     }
+    
 
     @Override
     public void insertAccount(Account account) {
