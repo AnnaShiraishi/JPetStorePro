@@ -13,6 +13,12 @@ public class AccountServiceImpl implements AccountService {
         accountDAO = new AccountDAOImpl();
         return accountDAO.getAccountByUsername(username);
     }
+    
+    @Override
+    public Account deleteAccount(String username) {
+        accountDAO = new AccountDAOImpl();
+        return accountDAO.deleteAccountByUsername(username);
+    }
 
     @Override
     public Account getAccount(String username, String password) {
